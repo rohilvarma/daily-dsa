@@ -9,11 +9,10 @@ public class PrimeFactorization {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int originalN = n;
         int div = 2;
-        while(n!=1 && div*div<=originalN) {
+        while(n!=1) {
             if(n%div==0) {
-                System.out.println(div);
+                System.out.print(div + " ");
                 n/=div;
             }
             else {
