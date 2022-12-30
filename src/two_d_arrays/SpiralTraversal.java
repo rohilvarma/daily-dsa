@@ -4,32 +4,34 @@ import java.util.Scanner;
 
 public class SpiralTraversal {
     public static void spiralTraversal(int[][] arr, int n, int m) {
-        int i=0;
-        int j=0;
-        int dir = 0;
-        while((i>=0 && i<n) && (j>=0 && j<m)) {
-            if(arr[i][j]==1) {
-                dir++;
-                dir%=4;
+        int total = n*m;
+        int count = 0;
+        int minr = 0;
+        int minc = 0;
+        int maxr = n-1;
+        int maxc = m-1;
+        while(count<total) {
+            for(int i=minr ; i<=maxr && count<total ; i++) {
+                System.out.println(arr[i][minc]);
+                count++;
             }
-            switch(dir) {
-                case 0:
-                    j++;
-                    break;
-                case 1:
-                    i++;
-                    break;
-                case 2:
-                    j--;
-                    break;
-                case 3:
-                    i--;
-                    break;
+            minc++;
+            for(int i=minc ; i<=maxc && count<total ; i++) {
+                System.out.println(arr[maxr][i]);
+                count++;
             }
+            maxr--;
+            for(int i=maxr ; i>=minr && count<total ; i--) {
+                System.out.println(arr[i][maxc]);
+                count++;
+            }
+            maxc--;
+            for(int i=maxc ; i>=minc && count<total ; i--) {
+                System.out.println(arr[minr][i]);
+                count++;
+            }
+            minr++;
         }
-        i = i<0 ? 0 : i==n ? n-1 : i;
-        j = j<0 ? 0 : j==m ? m-1 : j;
-        System.out.println(i + "\n" + j);
     }
 
     public static void main(String[] args) {

@@ -4,41 +4,34 @@ import java.util.Scanner;
 
 public class ExitPointOfAMatrix {
     public static void getExitPoint(int[][] arr, int n, int m) {
-        int count = 0;
-        int i=0;
-        int j=0;
-        while(true) {
-            if(i<0 || i>=n || j<0 || j>=m) {
-                if(i<0 || i>=n) {
-                    i = i<0 ? 0 : n-1;
-                }
-                else {
-                    j = j<0 ? 0 : m-1;
-                }
-                System.out.println(i + "\n" + j);
-                return ;
-            }
+        int dir = 0;
+        int i = 0;
+        int j = 0;
+        while((i>=0 && i<n) && (j>=0 && j<m)) {
             if(arr[i][j]==1) {
-                count++;
-                count%=4;
+                dir++;
+                dir%=4;
             }
-            switch(count) {
+            switch(dir) {
                 case 0:
-                    i++;
-                    break;
-                case 1:
                     j++;
                     break;
+                case 1:
+                    i++;
+                    break;
                 case 2:
-                    i--;
+                    j--;
                     break;
                 case 3:
-                    j--;
+                    i--;
                     break;
                 default:
                     break;
             }
         }
+        i = i<0 ? 0 : i==n ? n-1 : i;
+        j = j<0 ? 0 : j==m ? m-1 : j;
+        System.out.println(i + "\n" + j);
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

@@ -1,33 +1,48 @@
-import java.util.Scanner;
+import java.util.*;
 
-/**
- * App
- */
 public class App {
-    public static int countN(int n) {
-        int count = 0;
-        while(n!=0) {
-            n/=10;
-            count++;
-        }
-        return count;
-    }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        // write your code here
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[][] arr = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                arr[i][j] = sc.nextInt();
+            }
+        }
         
-        int count = countN(n);
-        int div = (int)Math.pow(10,count-1);
-        while(n!=0) {
-            System.out.println(n/div);
-            n%=div;
-            div/=10;
+        int dir = 0;
+        int i = 0;
+        int j = 0;
+        while((i>=0 && i<n) && (j>=0 && j<m)) {
+            System.out.println(i + " " + j);
+            if(arr[i][j]==1) {
+                dir++;
+                dir%=4;
+            }
+            switch(dir) {
+                case 0:
+                    j++;
+                    break;
+                case 1:
+                    i++;
+                    break;
+                case 2:
+                    j--;
+                    break;
+                case 3:
+                    i--;
+                    break;
+                default:
+                    break;
+            }
         }
-        while(div!=0) {
-            System.out.println(0);
-            div/=10;
-        }
-        sc.close();
+        i = i<0 ? 0 : i==n ? n-1 : i;
+        j = j<0 ? 0 : j==m ? m-1 : j;
+        System.out.println(i + "\n" + j);
     }
+
 }
