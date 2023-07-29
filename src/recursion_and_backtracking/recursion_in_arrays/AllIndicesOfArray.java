@@ -41,7 +41,7 @@ public class AllIndicesOfArray {
         }
         return count;
         
-        // This a more optimal approach that basicallly increases the count all the way till the end of the array and then initialises an array of length of that count and then returns that array. If the current index value corresponds to x then in that case it fills the array at index fsf, because the order of finding the element is basically the same as the index of the array.
+        // This a more optimal approach that basically increases the count all the way till the end of the array and then initializes an array of length of that count and then returns that array. If the current index value corresponds to x then in that case it fills the array at index fsf, because the order of finding the element is basically the same as the index of the array.
 
         // if(idx==arr.length) {
         //     return new int[fsf];
